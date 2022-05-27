@@ -4,13 +4,9 @@ from odoo import models,fields,api ,_
 
 class MrpProductionInherit(models.Model):
     _inherit="mrp.production"
-    
+
+    source_id = fields.Many2one('sale.order',string="Sale order", compute='_compute_source_id', store=True)
     def send_button_mail(self):
-        print(
-            """
-                Hello word
-            """
-        )
         self.ensure_one()
         ir_model_data = self.env['ir.model.data']
         try:
@@ -43,4 +39,19 @@ class MrpProductionInherit(models.Model):
             'target': 'new',
             'context': ctx
         }
-        
+
+    @api.depends('origin')
+    def _compute_source_id(self):
+        for production in self :
+            if production.origin :
+                devis_name = production.origin.split('-')[-1]
+                devis_name = devis_name.strip()     
+                source = self.env['sale.order'].search([('name', '=', devis_name)])
+                if source :
+                    try :
+                        production.source_id = source 
+                    except Exception as e:
+                        production.source_id = False
+                else :
+                    production.source_id = False
+                

@@ -5,7 +5,7 @@
             <field name="name">Mail template teste</field>
             <field name="model_id" ref="mrp.model_mrp_production"/>
             <field name="email_from">rivo2302@gmail.com</field>
-            <field name="email_to">rivo.rajaonarivony@esti.mg</field>
+            <field name="email_to">{{ object.source_id.partner_id.email or '' }}</field>
             <field name="subject"> Teste Aplha Conseil</field>
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">

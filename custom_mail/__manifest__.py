@@ -10,11 +10,12 @@
     'description': """
 This module is for sending mail to a customer.
     """,
-    'depends': ['mrp','mail'],
+    'depends': ['mrp','mail','sale'],
     'data': [
         'security/ir.model.access.csv',
         'views/mrp_production_form.xml',
-        'data/template.xml'
+        'data/template.xml',
+        
     ],
     'installable': True,
     'assets': {
