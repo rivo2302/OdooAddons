@@ -6,7 +6,7 @@
     'category': '',
     'author': 'rivo2302',
     'summary': 'Send mail toa customer',
-    'version': '1.0',
+    'version': '1.0.0',
     'description': """
 This module is for sending mail to a customer.
     """,
