@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mrp_production_form_inherit" model="ir.ui.view">
+            <field name="name">Inherit projet project form</field>
+            <field name="model">mrp.production</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_unbuild']" position="after">
+                    <button name="send_button_mail" type="object" string="Send mail"  class="oe_highlight" attrs="{'invisible': [('state', '!=', 'confirmed')]}" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
